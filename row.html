@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Пошук підрядка</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6f0;
+      text-align: center;
+      padding: 30px;
+    }
+    input {
+      width: 300px;
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: #ff5fa2;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #e84b8a;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .yes {
+      color: green;
+    }
+    .no {
+      color: red;
+    }
+    mark {
+      background: #ffb3d1;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Пошук підрядка в рядку</h2>
+
+<input type="text" id="text" placeholder="Введи рядок">
+<br>
+<input type="text" id="sub" placeholder="Введи підрядок">
+<br>
+<button onclick="findSubstring()">Знайти</button>
+
+<div id="result" class="result"></div>
+
+<script>
+function findSubstring() {
+  let text = document.getElementById("text").value;
+  let sub = document.getElementById("sub").value;
+  let result = document.getElementById("result");
+
+  if (text === "" || sub === "") {
+    result.innerHTML = "❗ Заповни обидва поля";
+    result.className = "result no";
+    return;
+  }
+
+  let lowerText = text.toLowerCase();
+  let lowerSub = sub.toLowerCase();
+
+  if (lowerText.includes(lowerSub)) {
+    let highlighted = text.replace(
+      new RegExp(sub, "gi"),
+      match => `<mark>${match}</mark>`
+    );
+    result.innerHTML = `✅ Підрядок знайдено:<br>${highlighted}`;
+    result.className = "result yes";
+  } else {
+    result.innerHTML = "❌ Підрядок не знайдено";
+    result.className = "result no";
+  }
+}
+</script>
+
+</body>
+</html>

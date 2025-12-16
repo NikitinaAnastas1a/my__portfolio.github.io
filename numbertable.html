@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Таблиця множення</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6f0;
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 8px 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: #ff5fa2;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #e84b8a;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ff5fa2;
+      padding: 10px 15px;
+    }
+    th {
+      background: #ffb3d1;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Таблиця множення</h2>
+
+<input type="number" id="num" placeholder="Введи число">
+<button onclick="showTable()">Показати</button>
+
+<div id="result"></div>
+
+<script>
+function showTable() {
+  let n = document.getElementById("num").value;
+  let html = "";
+
+  if (n === "") {
+    alert("Введи число!");
+    return;
+  }
+
+  html += "<table>";
+  html += "<tr><th>Приклад</th><th>Результат</th></tr>";
+
+  for (let i = 1; i <= 10; i++) {
+    html += `<tr>
+               <td>${n} × ${i}</td>
+               <td>${n * i}</td>
+             </tr>`;
+  }
+
+  html += "</table>";
+
+  document.getElementById("result").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
