@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вгадай персонажа Disney</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6f2;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      background: #ff69b4;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🎬 Вгадай персонажа Disney</h2>
+<p id="hint"></p>
+
+<input type="text" id="answer" placeholder="Введи ім'я персонажа">
+<br>
+<button onclick="checkAnswer()">Перевірити</button>
+
+<p id="result"></p>
+
+<script>
+  const characters = [
+    { name: "мулан", hint: "Вона врятувала Китай, перевдягнувшись у воїна" },
+    { name: "ельза", hint: "Вона має магічні крижані сили" },
+    { name: "аладдін", hint: "Він знайшов чарівну лампу з джином" },
+    { name: "аріель", hint: "Вона мріяла жити на суші" },
+    { name: "сімба", hint: "Він – майбутній король савани" }
+  ];
+
+  let current = characters[Math.floor(Math.random() * characters.length)];
+  document.getElementById("hint").textContent = "Підказка: " + current.hint;
+
+  function checkAnswer() {
+    let userAnswer = document.getElementById("answer").value.toLowerCase().trim();
+    let result = document.getElementById("result");
+
+    if (userAnswer === current.name) {
+      result.textContent = "✅ Правильно! Молодець!";
+      result.style.color = "green";
+    } else {
+      result.textContent = "❌ Неправильно. Спробуй ще!";
+      result.style.color = "red";
+    }
+  }
+</script>
+
+</body>
+</html>
