@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Перевірка віку</title>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #ff9acb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.box{
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 300px;
+}
+h2{
+    color: #501430;
+}
+p{
+    color: color-mix(in srgb-linear, red 50%, yellow 50%);
+}
+input{
+  padding: 10px;
+  width: 90%;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ff69b4;
+}
+button{
+  padding: 10px 20px;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover{
+  background: #ff3d96;
+}
+#result{
+  margin-top: 15px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Перевірка віку</h2>
+  <p>Введіть ваш вік</p>
+  <input type="number" id="age" placeholder="Ваш вік">
+  <button onclick="checkAge()">Перевірити</button>
+  <div id="result"></div>
+</div>
+
+<script>
+function checkAge(){
+  let age = document.getElementById("age").value;
+  let result = document.getElementById("result");
+
+  if(age === ""){
+    result.innerHTML = "❗ Введіть вік";
+    result.style.color = "orange";
+  } else if(age >= 18){
+    result.innerHTML = "✅ Доступ дозволено";
+    result.style.color = "green";
+  } else {
+    result.innerHTML = "⛔ Доступ заборонено";
+    result.style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>
